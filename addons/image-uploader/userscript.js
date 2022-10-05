@@ -15,7 +15,7 @@ export default async function ({ addon, msg, console }) {
   const uploadInput = document.createElement("input");
   uploadInput.className = "sa-image-upload-input";
   uploadInput.type = "file";
-  uploadInput.accept = "image/*";
+  uploadInput.accept = "*";
 
   // Button (the one the user interacts with)
   const inputButtonContainer = document.createElement("li");
