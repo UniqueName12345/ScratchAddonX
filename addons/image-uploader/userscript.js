@@ -101,8 +101,6 @@ export default async function ({ addon, msg, console }) {
 
     const files = [];
     for (const item of items) {
-      // Skip content if not image
-      if (!item.type.includes("image")) continue;
       // Retrieve image on clipboard as blob
       files.push(item.getAsFile());
     }
@@ -137,14 +135,14 @@ export default async function ({ addon, msg, console }) {
       const data = await res.json();
 
       if (data.status === "ok") {
-        insert(textBox, `[img]https://assets.scratch.mit.edu/get_image/.%2E/${data["content-name"]}[/img]`);
+        insert(textBox, `[img]https://assets.scratch.mit.edu/${data["content-name"]}[/img]`);
       } else {
         progressElement?.remove();
         alert(msg("upload-error"));
       }
       progressElement.remove();
     } catch (ex) {
-      console.log("Error encountered while uploading image:", ex);
+      console.log("Error encountered while uploading file:", ex);
       progressElement?.remove();
       alert(msg("upload-error"));
     }
